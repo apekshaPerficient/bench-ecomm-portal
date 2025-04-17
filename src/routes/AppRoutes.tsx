@@ -7,13 +7,14 @@ import Dashboard from '../pages/dashboard';
 import NotFound from '../pages/NotFound';
 import { ROUTES } from '../constants/routes';
 import Category from '../pages/dashboard/category';
+import CartPage from '../pages/cart/CartPage';
 
 const AppRoutes = () => {
   return (
     <Routes>
       {/* Public Routes */}
       <Route element={<AuthLayout />}>
-        <Route path={ROUTES.NOT_FOUND} element={<SignIn />} />
+        <Route path={ROUTES.LOGIN} element={<SignIn />} />
         {/* other public routes */}
       </Route>
 
@@ -22,6 +23,7 @@ const AppRoutes = () => {
         <Route element={<MainLayout />}>
           <Route path={ROUTES.HOME} element={<Dashboard />} />
           <Route path={ROUTES.CATEGORY} element={<Category />} />
+          <Route path={ROUTES.CART} element={<CartPage />}/>
           {/* Add other authenticated routes here */}
         </Route>
       </Route>

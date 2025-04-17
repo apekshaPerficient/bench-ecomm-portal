@@ -10,6 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link } from 'react-router-dom';
+import { ROUTES } from "../../constants/routes";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -62,6 +63,7 @@ const Header = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
+          <Link to={ROUTES.HOME}>
           <Typography
             variant="h6"
             noWrap
@@ -70,9 +72,9 @@ const Header = () => {
           >
             eCom  
           </Typography>
-
+          </Link>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems:"center" }}>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -82,7 +84,7 @@ const Header = () => {
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
-            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems:"center" }}>
               {navItems.map((item) => (
                 <Link 
                   to={`/category?type=${encodeURIComponent(item.label)}`}
@@ -92,6 +94,7 @@ const Header = () => {
                 </Link>
               ))}
             </Box>
+            <Link to={ROUTES.CART}>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
@@ -101,6 +104,8 @@ const Header = () => {
                 <AddShoppingCartIcon />
               </Badge>
             </IconButton>
+            </Link>
+            <Link to={ROUTES.LOGIN}>
             <IconButton
               size="large"
               edge="end"
@@ -110,6 +115,7 @@ const Header = () => {
             >
               <AccountCircle />
             </IconButton>
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>
